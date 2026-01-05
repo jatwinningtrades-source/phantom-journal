@@ -333,27 +333,27 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Total Trades</div>
-                <div class="stat-value" id="total-trades">2</div>
+                <div class="stat-value" id="total-trades">3</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value positive" id="win-rate">50%</div>
+                <div class="stat-value positive" id="win-rate">33%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total P&L</div>
-                <div class="stat-value positive" id="total-pnl">+$1,450</div>
+                <div class="stat-value positive" id="total-pnl">+$1,250</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total R</div>
-                <div class="stat-value gold" id="total-r">+8R</div>
+                <div class="stat-value gold" id="total-r">+7R</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Profit Factor</div>
-                <div class="stat-value" id="profit-factor">8.0</div>
+                <div class="stat-value" id="profit-factor">4.5</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Current Streak</div>
-                <div class="stat-value negative" id="streak">1L</div>
+                <div class="stat-value negative" id="streak">2L</div>
             </div>
         </div>
 
@@ -489,6 +489,20 @@
                             <td class="result loss">-$200</td>
                             <td class="result loss">-1R</td>
                         </tr>
+                        <!-- Trade 3 - LOSS (2 stops = done for day) -->
+                        <tr>
+                            <td>3</td>
+                            <td>Jan 5</td>
+                            <td>10:00 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25670.00</td>
+                            <td>—</td>
+                            <td>❌ Stopped</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$200</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -512,9 +526,14 @@
                 <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Discord Community</span>
             </div>
             
-            <a href="https://whop.com/quadthreat" class="cta-button">GET FULL ACCESS</a>
-            <p class="cta-price"><span style="font-size: 2rem;">$99</span>/month</p>
-            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 10px;">Cancel anytime · Instant access · 60+ indicators</p>
+            <div style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.15)); border: 2px solid var(--gold); border-radius: 12px; padding: 20px; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                <p style="color: var(--gold); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">🔥 EARLY ACCESS PRICING</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Lock in <span style="color: var(--green); font-weight: 600;">$47/mo</span> during 30-day forward test</p>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px;">Price increases to $99/mo after testing</p>
+            </div>
+            
+            <a href="https://jatwinning.gumroad.com/l/rxzwk" class="cta-button">GET EARLY ACCESS - $47/mo</a>
+            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 15px;">Cancel anytime · Instant access · 60+ indicators</p>
         </div>
 
         <footer>
@@ -554,6 +573,21 @@
                 tp1Hit: false,
                 tp2: null,
                 exit: 25637.00,
+                result: "LOSS",
+                pnl: -200,
+                r: -1.0
+            },
+            {
+                id: 3,
+                date: "Jan 5",
+                time: "10:00 AM",
+                direction: "LONG",
+                grade: "A",
+                entry: 25670.00,
+                tp1: null,
+                tp1Hit: false,
+                tp2: null,
+                exit: 25660.00,
                 result: "LOSS",
                 pnl: -200,
                 r: -1.0
