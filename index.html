@@ -329,10 +329,13 @@
             </div>
         </header>
 
-        <!-- Performance Stats -->
+        <!-- Performance Stats - HEADLINE NUMBERS -->
+        <div style="text-align: center; margin-bottom: 15px;">
+            <span style="background: linear-gradient(135deg, rgba(0,255,136,0.2), rgba(0,212,255,0.2)); padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; color: var(--green); border: 1px solid rgba(0,255,136,0.3);">📈 LIVE TRADING RESULTS</span>
+        </div>
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-label">Total Trades</div>
+                <div class="stat-label">Live Trades</div>
                 <div class="stat-value" id="total-trades">3</div>
             </div>
             <div class="stat-card">
@@ -349,11 +352,42 @@
             </div>
             <div class="stat-card">
                 <div class="stat-label">Profit Factor</div>
-                <div class="stat-value" id="profit-factor">4.5</div>
+                <div class="stat-value" id="profit-factor">4.13</div>
             </div>
             <div class="stat-card">
-                <div class="stat-label">Current Streak</div>
+                <div class="stat-label">Streak</div>
                 <div class="stat-value negative" id="streak">2L</div>
+            </div>
+        </div>
+        
+        <!-- Baseline Reference Stats -->
+        <div style="text-align: center; margin: 30px 0 15px 0;">
+            <span style="background: rgba(0,212,255,0.1); padding: 8px 20px; border-radius: 20px; font-size: 0.85rem; color: var(--accent); border: 1px solid rgba(0,212,255,0.2);">📊 INDICATOR BASELINE (All Signals)</span>
+        </div>
+        <div class="stats-grid" style="opacity: 0.85;">
+            <div class="stat-card">
+                <div class="stat-label">Signals</div>
+                <div class="stat-value">10</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value positive">50%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total P&L</div>
+                <div class="stat-value positive">+$4,810</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total R</div>
+                <div class="stat-value gold">+6R</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Profit Factor</div>
+                <div class="stat-value">2.20</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Max Loss Streak</div>
+                <div class="stat-value negative">5L</div>
             </div>
         </div>
 
@@ -437,12 +471,37 @@
             </div>
         </div>
 
-        <!-- Trade Journal -->
+        <!-- LIVE TRADING JOURNAL -->
         <div class="journal-section">
             <div class="section-header">
-                <div class="section-title">◈ TRADE LOG</div>
-                <div style="color: var(--text-dim); font-size: 0.9rem;">Updated: <span id="last-update">Jan 5, 2026</span></div>
+                <div class="section-title">◈ LIVE TRADING LOG</div>
+                <div style="color: var(--green); font-size: 0.9rem;">🔴 Actual trades taken with discretionary filters</div>
             </div>
+            
+            <!-- Live Stats -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; padding: 20px; background: rgba(0,255,136,0.03); border-bottom: 1px solid rgba(0,255,136,0.1);">
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">TRADES</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">3</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">WIN RATE</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">33%</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL P&L</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">+$1,250</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL R</div>
+                    <div style="color: var(--gold); font-size: 1.3rem; font-weight: 600;">+7R</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">PROFIT FACTOR</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">4.13</div>
+                </div>
+            </div>
+            
             <div class="table-container">
                 <table>
                     <thead>
@@ -453,15 +512,13 @@
                             <th>Direction</th>
                             <th>Grade</th>
                             <th>Entry</th>
-                            <th>TP1</th>
-                            <th>TP2/Exit</th>
                             <th>Result</th>
                             <th>P&L</th>
                             <th>R</th>
+                            <th>Notes</th>
                         </tr>
                     </thead>
-                    <tbody id="trade-log">
-                        <!-- Trade 1 - WINNER -->
+                    <tbody>
                         <tr>
                             <td>1</td>
                             <td>Jan 5</td>
@@ -469,13 +526,11 @@
                             <td><span class="direction long">▲ LONG</span></td>
                             <td><span class="grade a">A</span></td>
                             <td>25547.25</td>
-                            <td>✅ 25567.25</td>
-                            <td>✅ 25617.25</td>
                             <td><span class="result win">WIN</span></td>
                             <td class="result win">+$1,650</td>
                             <td class="result win">+9R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">TP1 + TP2 hit</td>
                         </tr>
-                        <!-- Trade 2 - LOSS -->
                         <tr>
                             <td>2</td>
                             <td>Jan 5</td>
@@ -483,13 +538,11 @@
                             <td><span class="direction long">▲ LONG</span></td>
                             <td><span class="grade a">A</span></td>
                             <td>25647.00</td>
-                            <td>—</td>
-                            <td>❌ Stopped</td>
                             <td><span class="result loss">LOSS</span></td>
                             <td class="result loss">-$200</td>
                             <td class="result loss">-1R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">Stopped out</td>
                         </tr>
-                        <!-- Trade 3 - LOSS (2 stops = done for day) -->
                         <tr>
                             <td>3</td>
                             <td>Jan 5</td>
@@ -497,14 +550,179 @@
                             <td><span class="direction long">▲ LONG</span></td>
                             <td><span class="grade a">A</span></td>
                             <td>25670.00</td>
-                            <td>—</td>
-                            <td>❌ Stopped</td>
                             <td><span class="result loss">LOSS</span></td>
                             <td class="result loss">-$200</td>
                             <td class="result loss">-1R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">2 stops = done</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+        
+        <!-- INDICATOR BASELINE -->
+        <div class="journal-section" style="margin-top: 40px;">
+            <div class="section-header">
+                <div class="section-title">◈ INDICATOR BASELINE</div>
+                <div style="color: var(--accent); font-size: 0.9rem;">📊 All signals fired (optimized settings: 20pt SL, Time-Based BE)</div>
+            </div>
+            
+            <!-- Baseline Stats -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; padding: 20px; background: rgba(0,212,255,0.03); border-bottom: 1px solid rgba(0,212,255,0.1);">
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">TRADES</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">10</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">WIN RATE</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">50%</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL P&L</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">+$4,810</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL R</div>
+                    <div style="color: var(--gold); font-size: 1.3rem; font-weight: 600;">+6R</div>
+                </div>
+                <div style="text-align: center;">
+                    <div style="color: var(--text-dim); font-size: 0.75rem;">PROFIT FACTOR</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">2.20</div>
+                </div>
+            </div>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Direction</th>
+                            <th>Grade</th>
+                            <th>Entry</th>
+                            <th>Result</th>
+                            <th>P&L</th>
+                            <th>R</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>Jan 5</td>
+                            <td>5:00 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25485</td>
+                            <td><span class="result win">BE</span></td>
+                            <td class="result win">+$40</td>
+                            <td class="result win">+0.1R</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>Jan 5</td>
+                            <td>8:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25547</td>
+                            <td><span class="result win">WIN</span></td>
+                            <td class="result win">+$3,540</td>
+                            <td class="result win">+4.4R</td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>Jan 5</td>
+                            <td>9:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25620</td>
+                            <td><span class="result win">WIN</span></td>
+                            <td class="result win">+$820</td>
+                            <td class="result win">+1R</td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>Jan 5</td>
+                            <td>9:45 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25655</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$800</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>Jan 5</td>
+                            <td>10:00 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25660</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$800</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Jan 5</td>
+                            <td>10:15 AM</td>
+                            <td><span class="direction short">▼ SHORT</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25650</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$800</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Jan 5</td>
+                            <td>10:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade c">C</span></td>
+                            <td>25640</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$800</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Jan 5</td>
+                            <td>10:45 AM</td>
+                            <td><span class="direction short">▼ SHORT</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25655</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$800</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Jan 5</td>
+                            <td>11:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25615</td>
+                            <td><span class="result win">BE</span></td>
+                            <td class="result win">+$180</td>
+                            <td class="result win">+0.2R</td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Jan 5</td>
+                            <td>2:30 PM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25589</td>
+                            <td><span class="result win">WIN</span></td>
+                            <td class="result win">+$3,430</td>
+                            <td class="result win">+4.3R</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="padding: 20px; text-align: center; color: var(--text-dim); font-size: 0.85rem; border-top: 1px solid rgba(255,255,255,0.05);">
+                <strong>Settings:</strong> 20pt Fixed SL · 7:1 R:R · Time-Based BE (23 bars, 1.0R min) · 2 Contracts
             </div>
         </div>
 
@@ -545,54 +763,39 @@
     </div>
 
     <script>
-        // Trade data - UPDATE THIS ARRAY TO ADD TRADES
-        const trades = [
-            {
-                id: 1,
-                date: "Jan 5",
-                time: "8:25 AM",
-                direction: "LONG",
-                grade: "A",
-                entry: 25547.25,
-                tp1: 25567.25,
-                tp1Hit: true,
-                tp2: 25617.25,
-                exit: 25617.25,
-                result: "WIN",
-                pnl: 1650,
-                r: 9.0
-            },
-            {
-                id: 2,
-                date: "Jan 5",
-                time: "9:45 AM",
-                direction: "LONG",
-                grade: "A",
-                entry: 25647.00,
-                tp1: null,
-                tp1Hit: false,
-                tp2: null,
-                exit: 25637.00,
-                result: "LOSS",
-                pnl: -200,
-                r: -1.0
-            },
-            {
-                id: 3,
-                date: "Jan 5",
-                time: "10:00 AM",
-                direction: "LONG",
-                grade: "A",
-                entry: 25670.00,
-                tp1: null,
-                tp1Hit: false,
-                tp2: null,
-                exit: 25660.00,
-                result: "LOSS",
-                pnl: -200,
-                r: -1.0
-            }
+        // BASELINE DATA - All indicator signals (optimized settings)
+        const baselineTrades = [
+            { id: 1, date: "Jan 5", time: "5:00 AM", direction: "LONG", grade: "B", entry: 25485, result: "BE", pnl: 40, r: 0.1 },
+            { id: 2, date: "Jan 5", time: "8:30 AM", direction: "LONG", grade: "A", entry: 25547, result: "WIN", pnl: 3540, r: 4.4 },
+            { id: 3, date: "Jan 5", time: "9:30 AM", direction: "LONG", grade: "B", entry: 25620, result: "WIN", pnl: 820, r: 1.0 },
+            { id: 4, date: "Jan 5", time: "9:45 AM", direction: "LONG", grade: "A", entry: 25655, result: "LOSS", pnl: -800, r: -1.0 },
+            { id: 5, date: "Jan 5", time: "10:00 AM", direction: "LONG", grade: "B", entry: 25660, result: "LOSS", pnl: -800, r: -1.0 },
+            { id: 6, date: "Jan 5", time: "10:15 AM", direction: "SHORT", grade: "B", entry: 25650, result: "LOSS", pnl: -800, r: -1.0 },
+            { id: 7, date: "Jan 5", time: "10:30 AM", direction: "LONG", grade: "C", entry: 25640, result: "LOSS", pnl: -800, r: -1.0 },
+            { id: 8, date: "Jan 5", time: "10:45 AM", direction: "SHORT", grade: "B", entry: 25655, result: "LOSS", pnl: -800, r: -1.0 },
+            { id: 9, date: "Jan 5", time: "11:30 AM", direction: "LONG", grade: "B", entry: 25615, result: "BE", pnl: 180, r: 0.2 },
+            { id: 10, date: "Jan 5", time: "2:30 PM", direction: "LONG", grade: "A", entry: 25589, result: "WIN", pnl: 3430, r: 4.3 }
         ];
+        
+        // LIVE TRADING DATA - Actual trades taken with discretion
+        const liveTrades = [
+            { id: 1, date: "Jan 5", time: "8:25 AM", direction: "LONG", grade: "A", entry: 25547.25, tp1Hit: true, result: "WIN", pnl: 1650, r: 9.0, notes: "TP1 + TP2 hit" },
+            { id: 2, date: "Jan 5", time: "9:45 AM", direction: "LONG", grade: "A", entry: 25647.00, tp1Hit: false, result: "LOSS", pnl: -200, r: -1.0, notes: "Stopped out" },
+            { id: 3, date: "Jan 5", time: "10:00 AM", direction: "LONG", grade: "A", entry: 25670.00, tp1Hit: false, result: "LOSS", pnl: -200, r: -1.0, notes: "2nd stop - done for day" }
+        ];
+        
+        // Calculate baseline stats
+        function calcStats(trades) {
+            const wins = trades.filter(t => t.result === 'WIN' || t.result === 'BE').length;
+            const losses = trades.filter(t => t.result === 'LOSS').length;
+            const totalR = trades.reduce((sum, t) => sum + t.r, 0);
+            const totalPnl = trades.reduce((sum, t) => sum + t.pnl, 0);
+            const grossProfit = trades.filter(t => t.pnl > 0).reduce((sum, t) => sum + t.pnl, 0);
+            const grossLoss = Math.abs(trades.filter(t => t.pnl < 0).reduce((sum, t) => sum + t.pnl, 0));
+            const pf = grossLoss > 0 ? (grossProfit / grossLoss).toFixed(2) : '∞';
+            const wr = ((wins / trades.length) * 100).toFixed(0);
+            return { wins, losses, totalR, totalPnl, pf, wr, total: trades.length };
+        }
 
         function updateStats() {
             const closed = trades.filter(t => t.result !== 'OPEN');
