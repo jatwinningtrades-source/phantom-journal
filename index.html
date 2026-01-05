@@ -344,7 +344,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total P&L</div>
-                <div class="stat-value positive" id="total-pnl">+$1,250</div>
+                <div class="stat-value positive" id="total-pnl">+$850</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total R</div>
@@ -352,7 +352,7 @@
             </div>
             <div class="stat-card">
                 <div class="stat-label">Profit Factor</div>
-                <div class="stat-value" id="profit-factor">4.13</div>
+                <div class="stat-value" id="profit-factor">2.06</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Streak</div>
@@ -490,7 +490,7 @@
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL P&L</div>
-                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">+$1,250</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">+$850</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL R</div>
@@ -498,7 +498,7 @@
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">PROFIT FACTOR</div>
-                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">4.13</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">2.06</div>
                 </div>
             </div>
             
@@ -539,7 +539,7 @@
                             <td><span class="grade a">A</span></td>
                             <td>25647.00</td>
                             <td><span class="result loss">LOSS</span></td>
-                            <td class="result loss">-$200</td>
+                            <td class="result loss">-$400</td>
                             <td class="result loss">-1R</td>
                             <td style="color: var(--text-dim); font-size: 0.8rem;">Stopped out</td>
                         </tr>
@@ -551,7 +551,7 @@
                             <td><span class="grade a">A</span></td>
                             <td>25670.00</td>
                             <td><span class="result loss">LOSS</span></td>
-                            <td class="result loss">-$200</td>
+                            <td class="result loss">-$400</td>
                             <td class="result loss">-1R</td>
                             <td style="color: var(--text-dim); font-size: 0.8rem;">2 stops = done</td>
                         </tr>
@@ -780,8 +780,8 @@
         // LIVE TRADING DATA - Actual trades taken with discretion
         const liveTrades = [
             { id: 1, date: "Jan 5", time: "8:25 AM", direction: "LONG", grade: "A", entry: 25547.25, tp1Hit: true, result: "WIN", pnl: 1650, r: 9.0, notes: "TP1 + TP2 hit" },
-            { id: 2, date: "Jan 5", time: "9:45 AM", direction: "LONG", grade: "A", entry: 25647.00, tp1Hit: false, result: "LOSS", pnl: -200, r: -1.0, notes: "Stopped out" },
-            { id: 3, date: "Jan 5", time: "10:00 AM", direction: "LONG", grade: "A", entry: 25670.00, tp1Hit: false, result: "LOSS", pnl: -200, r: -1.0, notes: "2nd stop - done for day" }
+            { id: 2, date: "Jan 5", time: "9:45 AM", direction: "LONG", grade: "A", entry: 25647.00, tp1Hit: false, result: "LOSS", pnl: -400, r: -1.0, notes: "Stopped out" },
+            { id: 3, date: "Jan 5", time: "10:00 AM", direction: "LONG", grade: "A", entry: 25670.00, tp1Hit: false, result: "LOSS", pnl: -400, r: -1.0, notes: "2nd stop - done for day" }
         ];
         
         // Calculate baseline stats
