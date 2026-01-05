@@ -333,27 +333,27 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Total Trades</div>
-                <div class="stat-value" id="total-trades">1</div>
+                <div class="stat-value" id="total-trades">2</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value positive" id="win-rate">100%</div>
+                <div class="stat-value positive" id="win-rate">50%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total P&L</div>
-                <div class="stat-value positive" id="total-pnl">+$1,650</div>
+                <div class="stat-value positive" id="total-pnl">+$1,450</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total R</div>
-                <div class="stat-value gold" id="total-r">+9R</div>
+                <div class="stat-value gold" id="total-r">+8R</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Profit Factor</div>
-                <div class="stat-value" id="profit-factor">∞</div>
+                <div class="stat-value" id="profit-factor">8.0</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Current Streak</div>
-                <div class="stat-value positive" id="streak">🔥 1W</div>
+                <div class="stat-value negative" id="streak">1L</div>
             </div>
         </div>
 
@@ -400,6 +400,19 @@
                             <li>✓ Move stop to breakeven after TP1</li>
                             <li>✓ Fixed 10pt stop loss</li>
                             <li>✓ 7:1 reward-to-risk ratio</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Daily Limits -->
+                    <div style="background: rgba(255,71,87,0.05); border: 1px solid rgba(255,71,87,0.2); border-radius: 10px; padding: 20px;">
+                        <h3 style="color: var(--red); font-size: 0.95rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            <span>🛑</span> DAILY LIMITS
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem; line-height: 2;">
+                            <li>✓ No limit on winners - let it ride</li>
+                            <li>✗ 2 full stop outs = done for the day</li>
+                            <li>✗ Max daily loss: -2R</li>
+                            <li>✓ TP1 hit → BE exit does NOT count as stop</li>
                         </ul>
                     </div>
                     
@@ -462,6 +475,20 @@
                             <td class="result win">+$1,650</td>
                             <td class="result win">+9R</td>
                         </tr>
+                        <!-- Trade 2 - LOSS -->
+                        <tr>
+                            <td>2</td>
+                            <td>Jan 5</td>
+                            <td>9:45 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25647.00</td>
+                            <td>—</td>
+                            <td>❌ Stopped</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$200</td>
+                            <td class="result loss">-1R</td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
@@ -515,6 +542,21 @@
                 result: "WIN",
                 pnl: 1650,
                 r: 9.0
+            },
+            {
+                id: 2,
+                date: "Jan 5",
+                time: "9:45 AM",
+                direction: "LONG",
+                grade: "A",
+                entry: 25647.00,
+                tp1: null,
+                tp1Hit: false,
+                tp2: null,
+                exit: 25637.00,
+                result: "LOSS",
+                pnl: -200,
+                r: -1.0
             }
         ];
 
