@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHANTOM EDGE™ Live Trading Journal | QuadThreat AI</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0f;
+            --bg-secondary: #12121a;
+            --bg-card: #1a1a25;
+            --accent: #00d4ff;
+            --accent-glow: rgba(0, 212, 255, 0.3);
+            --green: #00ff88;
+            --red: #ff4757;
+            --gold: #ffd700;
+            --text: #ffffff;
+            --text-dim: #8892a0;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        /* Animated Background */
+        .bg-grid {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 212, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 212, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+            margin-bottom: 40px;
+        }
+
+        .logo {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--accent), var(--gold));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px var(--accent-glow);
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+        }
+
+        .live-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 255, 136, 0.1);
+            border: 1px solid var(--green);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            color: var(--green);
+        }
+
+        .live-dot {
+            width: 8px;
+            height: 8px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-card:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 30px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        .stat-label {
+            color: var(--text-dim);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .stat-value {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .stat-value.positive { color: var(--green); }
+        .stat-value.negative { color: var(--red); }
+        .stat-value.gold { color: var(--gold); }
+
+        /* Trade Journal Table */
+        .journal-section {
+            background: var(--bg-card);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 40px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 25px;
+            border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+        }
+
+        .section-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 1.2rem;
+            color: var(--accent);
+        }
+
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: var(--bg-secondary);
+            padding: 15px 20px;
+            text-align: left;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-dim);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 18px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            white-space: nowrap;
+        }
+
+        tr:hover {
+            background: rgba(0, 212, 255, 0.03);
+        }
+
+        .direction {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .direction.long {
+            background: rgba(0, 255, 136, 0.15);
+            color: var(--green);
+        }
+
+        .direction.short {
+            background: rgba(255, 71, 87, 0.15);
+            color: var(--red);
+        }
+
+        .grade {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 4px;
+            font-weight: 700;
+            font-size: 0.85rem;
+        }
+
+        .grade.s { background: linear-gradient(135deg, #ffd700, #ff8c00); color: #000; }
+        .grade.a { background: rgba(0, 255, 136, 0.2); color: var(--green); }
+        .grade.b { background: rgba(0, 212, 255, 0.2); color: var(--accent); }
+        .grade.c { background: rgba(255, 255, 255, 0.1); color: var(--text-dim); }
+
+        .result {
+            font-weight: 600;
+        }
+
+        .result.win { color: var(--green); }
+        .result.loss { color: var(--red); }
+        .result.be { color: var(--gold); }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(180deg, transparent, rgba(0, 212, 255, 0.05));
+            border-radius: 16px;
+            border: 1px solid rgba(0, 212, 255, 0.2);
+        }
+
+        .cta-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .cta-subtitle {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--accent), #0099cc);
+            color: #000;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 18px 50px;
+            border-radius: 8px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 30px var(--accent-glow);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 50px var(--accent-glow);
+        }
+
+        .cta-price {
+            margin-top: 15px;
+            color: var(--text-dim);
+        }
+
+        .cta-price span {
+            color: var(--gold);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .logo { font-size: 2rem; }
+            .stat-value { font-size: 1.5rem; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr); }
+            th, td { padding: 12px 15px; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-grid"></div>
+    
+    <div class="container">
+        <header>
+            <div class="logo">◈ PHANTOM EDGE™</div>
+            <p class="tagline">Live Forward Test Trading Journal | NQ Futures</p>
+            <div class="live-badge">
+                <span class="live-dot"></span>
+                LIVE TRACKING
+            </div>
+        </header>
+
+        <!-- Performance Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Trades</div>
+                <div class="stat-value" id="total-trades">1</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Win Rate</div>
+                <div class="stat-value positive" id="win-rate">100%</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total P&L</div>
+                <div class="stat-value positive" id="total-pnl">+$1,650</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Total R</div>
+                <div class="stat-value gold" id="total-r">+9R</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Profit Factor</div>
+                <div class="stat-value" id="profit-factor">∞</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Current Streak</div>
+                <div class="stat-value positive" id="streak">🔥 1W</div>
+            </div>
+        </div>
+
+        <!-- Trading Rules -->
+        <div class="journal-section" style="margin-bottom: 40px;">
+            <div class="section-header">
+                <div class="section-title">◈ TRADING RULES</div>
+                <div style="color: var(--text-dim); font-size: 0.9rem;">The indicator fires signals. These rules filter them.</div>
+            </div>
+            <div style="padding: 25px;">
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px;">
+                    
+                    <!-- Time Rules -->
+                    <div style="background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2); border-radius: 10px; padding: 20px;">
+                        <h3 style="color: var(--accent); font-size: 0.95rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            <span>🕐</span> TIME FILTERS
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem; line-height: 2;">
+                            <li>✗ No trades first 15 min after open (9:30-9:45 ET)</li>
+                            <li>✗ No trades last 15 min before close</li>
+                            <li>✓ Best window: 10:00 AM - 11:30 AM ET</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- News Rules -->
+                    <div style="background: rgba(255,71,87,0.05); border: 1px solid rgba(255,71,87,0.2); border-radius: 10px; padding: 20px;">
+                        <h3 style="color: var(--red); font-size: 0.95rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            <span>📰</span> NEWS BLACKOUTS
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem; line-height: 2;">
+                            <li>✗ No trades during FOMC announcements</li>
+                            <li>✗ No trades during red folder news (CPI, NFP, GDP)</li>
+                            <li>✗ Avoid 30 min before/after major releases</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Trade Management -->
+                    <div style="background: rgba(0,255,136,0.05); border: 1px solid rgba(0,255,136,0.2); border-radius: 10px; padding: 20px;">
+                        <h3 style="color: var(--green); font-size: 0.95rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            <span>🎯</span> TRADE MANAGEMENT
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem; line-height: 2;">
+                            <li>✓ 2 contracts: scale out at TP1, runner to TP2</li>
+                            <li>✓ Move stop to breakeven after TP1</li>
+                            <li>✓ Fixed 10pt stop loss</li>
+                            <li>✓ 7:1 reward-to-risk ratio</li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Signal Quality -->
+                    <div style="background: rgba(255,215,0,0.05); border: 1px solid rgba(255,215,0,0.2); border-radius: 10px; padding: 20px;">
+                        <h3 style="color: var(--gold); font-size: 0.95rem; margin-bottom: 15px; display: flex; align-items: center; gap: 8px;">
+                            <span>⭐</span> SIGNAL SELECTION
+                        </h3>
+                        <ul style="list-style: none; color: var(--text-dim); font-size: 0.9rem; line-height: 2;">
+                            <li>✓ Prefer Grade A and S signals</li>
+                            <li>✓ Higher confluence = higher confidence</li>
+                            <li>✗ Skip Grade C and D in choppy markets</li>
+                            <li>✓ Max 1-2 trades per day</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+                
+                <p style="margin-top: 25px; padding: 15px; background: rgba(255,255,255,0.03); border-radius: 8px; color: var(--text-dim); font-size: 0.85rem; text-align: center;">
+                    💡 <strong style="color: var(--text);">The indicator provides signals. These rules are MY discretionary filters based on 15+ years of trading NQ.</strong>
+                </p>
+            </div>
+        </div>
+
+        <!-- Trade Journal -->
+        <div class="journal-section">
+            <div class="section-header">
+                <div class="section-title">◈ TRADE LOG</div>
+                <div style="color: var(--text-dim); font-size: 0.9rem;">Updated: <span id="last-update">Jan 5, 2026</span></div>
+            </div>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                            <th>Direction</th>
+                            <th>Grade</th>
+                            <th>Entry</th>
+                            <th>TP1</th>
+                            <th>TP2/Exit</th>
+                            <th>Result</th>
+                            <th>P&L</th>
+                            <th>R</th>
+                        </tr>
+                    </thead>
+                    <tbody id="trade-log">
+                        <!-- Trade 1 - WINNER -->
+                        <tr>
+                            <td>1</td>
+                            <td>Jan 5</td>
+                            <td>8:25 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25547.25</td>
+                            <td>✅ 25567.25</td>
+                            <td>✅ 25617.25</td>
+                            <td><span class="result win">WIN</span></td>
+                            <td class="result win">+$1,650</td>
+                            <td class="result win">+9R</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Join QuadThreat AI</h2>
+            <p class="cta-subtitle">
+                Get the full trading arsenal: PHANTOM EDGE™, Quantum Prime v4.0, 
+                ORB Suite, Trap Indicators, GANN Tools, guides, and Discord community.
+            </p>
+            
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ PHANTOM EDGE™ Pro</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Quantum Prime v4.0</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ ORB Suite</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Trap Indicators</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ GANN Tools</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Trading Guides</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Discord Community</span>
+            </div>
+            
+            <a href="https://whop.com/quadthreat" class="cta-button">GET FULL ACCESS</a>
+            <p class="cta-price"><span style="font-size: 2rem;">$99</span>/month</p>
+            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 10px;">Cancel anytime · Instant access · 60+ indicators</p>
+        </div>
+
+        <footer>
+            <p>◈ PHANTOM EDGE™ by <a href="https://youtube.com/@QuadThreatAI">QuadThreat AI</a></p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">
+                Trading futures involves substantial risk. Past performance is not indicative of future results.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        // Trade data - UPDATE THIS ARRAY TO ADD TRADES
+        const trades = [
+            {
+                id: 1,
+                date: "Jan 5",
+                time: "8:25 AM",
+                direction: "LONG",
+                grade: "A",
+                entry: 25547.25,
+                tp1: 25567.25,
+                tp1Hit: true,
+                tp2: 25617.25,
+                exit: 25617.25,
+                result: "WIN",
+                pnl: 1650,
+                r: 9.0
+            }
+        ];
+
+        function updateStats() {
+            const closed = trades.filter(t => t.result !== 'OPEN');
+            const wins = closed.filter(t => t.result === 'WIN' || t.result === 'BE');
+            const losses = closed.filter(t => t.result === 'LOSS');
+            
+            const totalTrades = trades.length;
+            const winRate = closed.length > 0 ? ((wins.length / closed.length) * 100).toFixed(0) + '%' : '-';
+            const totalPnl = trades.reduce((sum, t) => sum + (t.pnl || 0), 0);
+            const totalR = trades.reduce((sum, t) => sum + (t.r || 0), 0);
+            
+            document.getElementById('total-trades').textContent = totalTrades;
+            document.getElementById('win-rate').textContent = winRate;
+            document.getElementById('total-pnl').textContent = (totalPnl >= 0 ? '+$' : '-$') + Math.abs(totalPnl).toLocaleString();
+            document.getElementById('total-r').textContent = (totalR >= 0 ? '+' : '') + totalR.toFixed(1) + 'R';
+            
+            // Update colors
+            document.getElementById('total-pnl').className = 'stat-value ' + (totalPnl >= 0 ? 'positive' : 'negative');
+            document.getElementById('total-r').className = 'stat-value ' + (totalR >= 0 ? 'gold' : 'negative');
+        }
+
+        updateStats();
+    </script>
+</body>
+</html>
