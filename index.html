@@ -308,6 +308,12 @@
             border-bottom: 1px solid rgba(0, 212, 255, 0.2);
         }
 
+        .day-header.today {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--green);
+            border-bottom: 1px solid rgba(0, 255, 136, 0.3);
+        }
+
         @media (max-width: 768px) {
             .logo { font-size: 2rem; }
             .stat-value { font-size: 1.5rem; }
@@ -336,27 +342,27 @@
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-label">Live Trades</div>
-                <div class="stat-value" id="total-trades">20</div>
+                <div class="stat-value" id="total-trades">25</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Win Rate</div>
-                <div class="stat-value positive" id="win-rate">35%</div>
+                <div class="stat-value positive" id="win-rate">44%</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total P&L</div>
-                <div class="stat-value positive" id="total-pnl">+$3,524</div>
+                <div class="stat-value positive" id="total-pnl">+$6,712</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Total R</div>
-                <div class="stat-value gold" id="total-r">+10.3R</div>
+                <div class="stat-value gold" id="total-r">+14.3R</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Profit Factor</div>
-                <div class="stat-value" id="profit-factor">1.37</div>
+                <div class="stat-value" id="profit-factor">1.52</div>
             </div>
             <div class="stat-card">
                 <div class="stat-label">Streak</div>
-                <div class="stat-value negative" id="streak">1L</div>
+                <div class="stat-value positive" id="streak">3W 🔥</div>
             </div>
         </div>
         
@@ -476,23 +482,23 @@
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; padding: 20px; background: rgba(0,255,136,0.03); border-bottom: 1px solid rgba(0,255,136,0.1);">
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">TRADES</div>
-                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">20</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">25</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">WIN RATE</div>
-                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">35%</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">44%</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL P&L</div>
-                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">+$3,524</div>
+                    <div style="color: var(--green); font-size: 1.3rem; font-weight: 600;">+$6,712</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">TOTAL R</div>
-                    <div style="color: var(--gold); font-size: 1.3rem; font-weight: 600;">+10.3R</div>
+                    <div style="color: var(--gold); font-size: 1.3rem; font-weight: 600;">+14.3R</div>
                 </div>
                 <div style="text-align: center;">
                     <div style="color: var(--text-dim); font-size: 0.75rem;">PROFIT FACTOR</div>
-                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">1.37</div>
+                    <div style="color: var(--text); font-size: 1.3rem; font-weight: 600;">1.52</div>
                 </div>
             </div>
             
@@ -513,6 +519,70 @@
                         </tr>
                     </thead>
                     <tbody>
+                        <!-- DAY 5: Jan 9 - TODAY -->
+                        <tr>
+                            <td colspan="10" class="day-header today">📅 Friday, Jan 9, 2026 — Day 5 🔥 TODAY</td>
+                        </tr>
+                        <tr style="background: rgba(0,255,136,0.03);">
+                            <td>25</td>
+                            <td>Jan 9</td>
+                            <td>10:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25,850</td>
+                            <td><span class="result be">BE</span></td>
+                            <td class="result win">+$68</td>
+                            <td class="result win">+0.1R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">TP1 ✓ → BE exit</td>
+                        </tr>
+                        <tr style="background: rgba(0,255,136,0.03);">
+                            <td>24</td>
+                            <td>Jan 9</td>
+                            <td>10:00 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25,680</td>
+                            <td><span class="result be">BE</span></td>
+                            <td class="result win">+$415</td>
+                            <td class="result win">+0.5R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">TP1 ✓ → BE exit</td>
+                        </tr>
+                        <tr style="background: rgba(0,255,136,0.03);">
+                            <td>23</td>
+                            <td>Jan 9</td>
+                            <td>9:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25,720</td>
+                            <td><span class="result be">BE</span></td>
+                            <td class="result win">+$175</td>
+                            <td class="result win">+0.2R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">TP1 ✓ → BE exit</td>
+                        </tr>
+                        <tr style="background: rgba(0,255,136,0.03);">
+                            <td>22</td>
+                            <td>Jan 9</td>
+                            <td>8:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade b">B</span></td>
+                            <td>25,780</td>
+                            <td><span class="result loss">LOSS</span></td>
+                            <td class="result loss">-$800</td>
+                            <td class="result loss">-1R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">Never hit TP1 → stopped</td>
+                        </tr>
+                        <tr style="background: rgba(0,255,136,0.03);">
+                            <td>21</td>
+                            <td>Jan 9</td>
+                            <td>7:30 AM</td>
+                            <td><span class="direction long">▲ LONG</span></td>
+                            <td><span class="grade a">A</span></td>
+                            <td>25,650</td>
+                            <td><span class="result win">WIN</span></td>
+                            <td class="result win">+$3,330</td>
+                            <td class="result win">+4.2R</td>
+                            <td style="color: var(--text-dim); font-size: 0.8rem;">TP1 ✓ → TP2 ✓ 🔥</td>
+                        </tr>
                         <!-- DAY 4: Jan 8 -->
                         <tr>
                             <td colspan="10" class="day-header">📅 Thursday, Jan 8, 2026 — Day 4</td>
@@ -885,28 +955,28 @@
         <div class="cta-section">
             <h2 class="cta-title">Join QuadThreat AI</h2>
             <p class="cta-subtitle">
-                Get the full trading arsenal: PHANTOM EDGE™, Quantum Prime v4.0, 
+                Get the full trading arsenal: PHANTOM EDGE™, Brooks/GANN V6, 
                 ORB Suite, Trap Indicators, GANN Tools, guides, and Discord community.
             </p>
             
             <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-bottom: 30px; max-width: 700px; margin-left: auto; margin-right: auto;">
                 <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ PHANTOM EDGE™ Pro</span>
-                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Quantum Prime v4.0</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Brooks/GANN V6</span>
                 <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ ORB Suite</span>
                 <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Trap Indicators</span>
                 <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ GANN Tools</span>
-                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Trading Guides</span>
+                <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Daily Live Calls</span>
                 <span style="background: rgba(0,212,255,0.1); border: 1px solid rgba(0,212,255,0.3); padding: 8px 16px; border-radius: 20px; font-size: 0.85rem;">◈ Discord Community</span>
             </div>
             
             <div style="background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.15)); border: 2px solid var(--gold); border-radius: 12px; padding: 20px; margin-bottom: 25px; max-width: 500px; margin-left: auto; margin-right: auto;">
-                <p style="color: var(--gold); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">🔥 EARLY ACCESS PRICING</p>
-                <p style="color: var(--text-dim); font-size: 0.9rem;">Lock in <span style="color: var(--green); font-weight: 600;">$47/mo</span> during 30-day forward test</p>
-                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px;">Price increases to $99/mo after testing</p>
+                <p style="color: var(--gold); font-weight: 700; font-size: 1rem; margin-bottom: 5px;">🔥 FOUNDING MEMBER PRICING</p>
+                <p style="color: var(--text-dim); font-size: 0.9rem;">Lock in <span style="color: var(--green); font-weight: 600;">$47/mo</span> — price goes to $197/mo in 6 months</p>
+                <p style="color: var(--text-dim); font-size: 0.8rem; margin-top: 5px;">Your rate is locked forever if you join now</p>
             </div>
             
-            <a href="https://jatwinning.gumroad.com/l/rxzwk?_gl=1*1v6asin*_ga*NjcwNzIzNjcwLjE3NDgwOTU0MTU.*_ga_6LJN6D94N6*czE3Njc2MjM5MTYkbzI1OSRnMSR0MTc2NzYyNjI4NiRqNTAkbDAkaDA." class="cta-button">GET EARLY ACCESS - $47/mo</a>
-            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 15px;">Cancel anytime · Instant access · 60+ indicators</p>
+            <a href="https://jatwinning.gumroad.com/l/rxzwk" class="cta-button">GET FOUNDING ACCESS - $47/mo</a>
+            <p style="color: var(--text-dim); font-size: 0.85rem; margin-top: 15px;">Cancel anytime · Instant access · 60+ indicators · Daily live calls</p>
         </div>
 
         <footer>
